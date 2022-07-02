@@ -1,1 +1,6 @@
-<p>note works!</p>
+<article>
+   <p>{{note.data}}</p>
+   <p>{{note.text}}</p>
+   <span class="material-icons" (click)="removeNote()"> delete_forever </span>
+   <span *ngIf="note.urgent" class="material-icons" id="priority">priority_high</span>
+</article>

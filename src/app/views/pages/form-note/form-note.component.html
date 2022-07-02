@@ -1,1 +1,11 @@
-<p>form-note works!</p>
+<aside>
+   <img [src]="imagemLogo" alt="logo fiap"> <!-- Usando variavel de classe com propriedade de tag -->
+   <h1>{{titulo}}</h1> <!-- Interpolação de componente de classe -->
+   <form id="form-notes">
+      <div class="input-group">
+         <label>Nota:</label>
+         <textarea id="input-cpf" required placeholder="Digite a nota"></textarea>
+      </div>
+      <button>Salvar</button>
+   </form>
+</aside>
