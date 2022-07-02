@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Note } from './@types/note';
 
 @Injectable({
@@ -9,11 +10,17 @@ export class NoteService {
 
   private apiUrl: String;
 
+  private newNoteSource = new Subject<Note>(); //Subject que implementa o observable
+  newNoteProvider = this.newNoteSource.asObservable(); // Aqui que vão se inscrever no observable
+
   constructor(private http: HttpClient) { 
     this.apiUrl = 'http://fiap-notes-api.herokuapp.com';
   }
 
-
+  nofityNewNoteAdded(note: Note){
+    this.newNoteSource.next(note);
+  }
+  
     // Cria um grupo de notas diferentes para renderização com ngFor
     private notes = [ 
       {
@@ -53,7 +60,7 @@ export class NoteService {
     postNote(textNote: string) {
       return this.http.post<Note>(`${this.apiUrl}/notes`, { text: textNote });
     }
-    
+
     removeNote(noteId: number) {
       return this.http.delete(`${this.apiUrl}/notes/${noteId}`);
     }

@@ -24,10 +24,14 @@ export class FormNoteComponent implements OnInit {
 
   sendNote() {
     // console.log(this.checkoutForm.get('textNote')?.errors);
-    if(this.checkoutForm.valid) {
-      this.noteService.postNote(this.checkoutForm.value.textNote).subscribe(
-        () => this.checkoutForm.reset(),
-      );
+    if (this.checkoutForm.valid) {
+      this.noteService.postNote(this.checkoutForm.value.textNote).subscribe({
+        next: (note) => {
+          this.checkoutForm.reset()
+          this.noteService.nofityNewNoteAdded(note);
+        },
+        error: (error) => alert("Algo errado na inserção!")
+      });
     }
   }
 
