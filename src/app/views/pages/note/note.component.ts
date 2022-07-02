@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Note } from 'src/app/services/@types/note';
 
 @Component({
   selector: 'app-note',
@@ -7,21 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NoteComponent implements OnInit {
 
-  note = {
-    id: 1,
-    data: new Date(),
-    text: 'Um texto qualquer',
-    urgent: true,
-  }
-  
+  @Input()
+  noteProp = {} as Note; //Quando não for inicializada tem que dizer o tipo;
+  @Input()
+  titleProp: any;
+
+  @Output()
+  notify = new EventEmitter(); // Método para emitir um evento para o pai
+
   constructor() { }
 
+  ngOnInit(): void { }
 
-  ngOnInit(): void {
-  }
-
-  removeNote() {
-    alert("Remover nota");
+  confirmRemove() {
+    if (confirm("Deseja remover a nota?")) {
+      this.notify.emit();
+    }
   }
 
 }

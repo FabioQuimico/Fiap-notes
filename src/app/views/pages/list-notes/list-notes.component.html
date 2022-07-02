@@ -1,3 +1,11 @@
 <section>
-  <app-note></app-note>
+  <app-note 
+  *ngFor="let noteTemp of notes" 
+  [noteProp]="noteTemp" 
+  (notify)="removeNote(noteTemp.id)" 
+  [titleProp]="title"></app-note>
 </section>
+<!-- ngFor percorre todos os itens de uma lista
+notify é um evento do filho sendo passado para o pai executar uma função
+noteprp recebe cada item da iteração
+titleprop é passado como parametro -->
