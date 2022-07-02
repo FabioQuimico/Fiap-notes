@@ -50,7 +50,12 @@ export class NoteService {
       return this.notes;
     }
 
+    postNote(textNote: string) {
+      return this.http.post<Note>(`${this.apiUrl}/notes`, { text: textNote });
+    }
+    
     removeNote(noteId: number) {
       return this.http.delete(`${this.apiUrl}/notes/${noteId}`);
     }
+
 }
