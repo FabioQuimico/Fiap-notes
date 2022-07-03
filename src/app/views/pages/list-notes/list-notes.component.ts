@@ -21,6 +21,11 @@ export class ListNotesComponent implements OnInit {
       //this.notes.push(note); // Essa forma adiciona a nota no fim e não renderiza tudo de novo
       error: () => alert('Algo deu errado na inclusão!')
     });
+    this.subscription = this.noteService.editNoteProvider.subscribe((note: Note) => {
+      next: (note: Note) => {this.getApiNotes();}
+      //this.notes.push(note); // Essa forma adiciona a nota no fim e não renderiza tudo de novo
+      error: () => alert('Algo deu errado na inclusão!')
+    });
   }
 
 

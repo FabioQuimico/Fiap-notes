@@ -15,8 +15,7 @@ article p:first-child {
 
 article .material-icons {
   position: absolute;
-  bottom: 5px;
-  right: 5px;
+
   font-size: 32px;
   cursor: pointer;
   transition: 0.2s;
@@ -28,6 +27,12 @@ article .material-icons:hover {
   transform: rotate(360deg);
 }
 
+#lixeira {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+
 #priority {
   position: absolute;
   bottom: 5px;
@@ -36,7 +41,7 @@ article .material-icons:hover {
 }
 
 #edit {
-  position: relative;
-  top: 105px;
-  left: 75px
+  position: absolute;
+  bottom: 5px;
+  left: 120px
 }

@@ -1,6 +1,7 @@
 <article>
    <p>{{noteProp.date | date: "hh:mm - dd/MM/yyyy" }}</p> <!-- o pipe date formata a propriedade data  -->
    <p>{{noteProp.text}}</p>
-   <span class="material-icons" (click)="confirmRemove()"> delete_forever </span>
    <span *ngIf="noteProp.urgent" class="material-icons" id="priority">priority_high</span>
+   <span class="material-icons" (click)="confirmRemove()" id="lixeira"> delete_forever </span>
+   <span class="material-icons" (click)="editNote()" id="edit"> edit </span>
 </article>
